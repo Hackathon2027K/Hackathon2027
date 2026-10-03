@@ -7,22 +7,7 @@ import microsoftLogo from '../assets/logo/microsoft.png';
 import igeniusLogo from '../assets/logo/igenius.png';
 
 /* ─── Data ─── */
-const hostedBy = [
-  {
-    logo: srcasLogo,
-    name: 'Sri Ramakrishna College of Arts and Science',
-    label: 'Hosted by',
-    description:
-      'Sri Ramakrishna College of Arts and Science (SRCAS), Coimbatore, ranked 76th in NIRF 2025, excels in teaching, research, and learning resources. Accredited with NAAC "A+" grade and affiliated to Bharathiar University, SRCAS offers diverse programs and empowers students through innovation and quality education.',
-  },
-  {
-    logo: programmingClubLogo,
-    name: 'Programming Club',
-    label: 'Hosted by',
-    description:
-      'Programming club of SRCAS, dedicated to fostering innovation and technical excellence among students. We organize coding competitions, workshops, and hackathons to build a strong developer community.',
-  },
-];
+const hostedBy = [];
 
 const partners = [
   {
@@ -160,117 +145,7 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* ── HOSTED BY ── */}
-      <section style={{ padding: '80px clamp(20px, 6vw, 80px)' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <motion.div {...fadeUp(0)} style={{ marginBottom: 40 }}>
-            <SectionLabel>Hosted by</SectionLabel>
-          </motion.div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 400px))',
-              justifyContent: 'center',
-              gap: 28,
-            }}
-          >
-            {hostedBy.map((h, i) => (
-              <motion.div
-                key={i}
-                {...fadeUp(i * 0.1)}
-                whileHover={{
-                  y: -6,
-                  boxShadow: '0 16px 48px rgba(0,0,0,0.1)',
-                }}
-                style={{
-                  background: '#fff',
-                  borderRadius: 24,
-                  overflow: 'hidden',
-                  border: '1.5px solid #e5e7eb',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-                  cursor: 'default',
-                  transition: 'all 0.25s ease',
-                  minHeight: 520,
-                  display: 'flex',
-                  flexDirection: 'column',
-                }}
-              >
-                {/* Logo */}
-                <div
-                  style={{
-                    background: '#f9f9f9',
-                    height: 220,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: 32,
-                    borderBottom: '1px solid #f0f0f0',
-                  }}
-                >
-                  <img
-                    src={h.logo}
-                    alt={h.name}
-                    style={{
-                      maxHeight: 100,
-                      maxWidth: '80%',
-                      objectFit: 'contain',
-                    }}
-                  />
-                </div>
-
-                {/* Content */}
-                <div
-                  style={{
-                    padding: '24px',
-                    textAlign: 'center',
-                    flex: 1,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: '0.65rem',
-                      fontWeight: 700,
-                      letterSpacing: '0.2em',
-                      textTransform: 'uppercase',
-                      color: '#9ca3af',
-                      marginBottom: 12,
-                    }}
-                  >
-                    {h.label}
-                  </p>
-
-                  <h3
-                    style={{
-                      fontSize: '1.15rem',
-                      fontWeight: 800,
-                      color: '#111',
-                      margin: '0 0 16px',
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {h.name}
-                  </h3>
-
-                  <p
-                    style={{
-                      fontSize: '0.86rem',
-                      color: '#6b7280',
-                      lineHeight: 1.8,
-                      margin: 0,
-                    }}
-                  >
-                    {h.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── OUR PARTNERS ── */}
       <section style={{ padding: '0 clamp(20px, 6vw, 80px) 80px' }}>

@@ -56,7 +56,7 @@ export default function HighlightsPage() {
       {/* ── PARALLAX HERO ── */}
       <HeroParallaxDemo />
 
-      {/* ── SRCAS HACKATHON ── */}
+      {/* ── Hackathon 2027 ── */}
       <section style={{ padding: "80px clamp(16px, 5vw, 60px)" }}>
         <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
           <motion.div
@@ -66,7 +66,7 @@ export default function HighlightsPage() {
             transition={{ duration: 0.6 }}
           >
             <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 900, letterSpacing: "-0.03em", color: "#111", margin: "0 0 12px" }}>
-              SRCAS Hackathon
+              Hackathon 2027
             </h2>
             <p style={{ fontSize: "1.05rem", color: "#6b7280", marginBottom: 36 }}>
               Relive the memories from our first hackathon
@@ -132,7 +132,7 @@ export default function HighlightsPage() {
           >
             <img
               src={crewImage}
-              alt="SRCAS Hackathon Committee Crew"
+              alt="Hackathon 2027 Committee Crew"
               style={{ width: "100%", display: "block", objectFit: "cover" }}
             />
           </motion.div>

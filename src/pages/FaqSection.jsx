@@ -22,7 +22,7 @@ const faqs = [
     ),
   },
   {
-    question: "Who can participate in the SRCAS Hackathon 3.0?",
+    question: "Who can participate in the Hackathon 2027?",
     answer:
       "The hackathon is open to all students, regardless of skill level. Whether you're a beginner exploring your first project or an experienced developer, you're welcome to participate.",
   },
@@ -34,7 +34,7 @@ const faqs = [
   {
     question: "Can team members be from different colleges?",
     answer:
-      "No. All team members must belong to the same college. However, students from different departments within the same college are allowed to form a team. Cross-college teams are not permitted for SRCAS Hackathon 3.0.",
+      "No. All team members must belong to the same college. However, students from different departments within the same college are allowed to form a team. Cross-college teams are not permitted for Hackathon 2027.",
   },
   {
     question: "Who is eligible to participate in the hackathon?",
@@ -47,7 +47,7 @@ const faqs = [
       "No, participation is completely free. We believe innovation should be accessible to everyone.",
   },
   {
-    question: "What should I bring to the SRCAS Hackathon 3.0?",
+    question: "What should I bring to the Hackathon 2027?",
     answer:
       "Please bring your laptop, charger, any hardware required for your project, and lots of creativity. Food, refreshments, Wi-Fi, and a comfortable workspace will be provided by the organizers.",
   },

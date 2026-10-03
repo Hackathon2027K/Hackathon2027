@@ -127,12 +127,12 @@ const guidelinesPart2 = [
   },
   {
     id: '08', title: 'In-person Event',
-    description: 'SRCAS Hackathon 3.0 is an in-person (offline) hackathon event at SRCAS Coimbatore.',
+    description: 'Hackathon 2027 is an in-person (offline) hackathon event at Coimbatore.',
     icon: Building
   },
   {
     id: '09', title: 'Venue',
-    description: 'SRCAS Coimbatore awaits—explore our beautiful campus and bring innovative ideas to life.',
+    description: 'Coimbatore awaits—explore our beautiful campus and bring innovative ideas to life.',
     icon: MapPin
   },
   {

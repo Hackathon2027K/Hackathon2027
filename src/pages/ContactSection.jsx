@@ -204,43 +204,7 @@ const ContactSection = () => {
                         </div>
                     </motion.div>
 
-                    {/* Coordinator 2 */}
-                    <motion.div variants={fadeInUp} style={{
-                        background: '#fff', borderRadius: '24px', padding: '32px',
-                        boxShadow: '0 20px 40px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.05)',
-                        border: '1px solid rgba(0,0,0,0.02)',
-                        display: 'flex', flexDirection: 'column', gap: '24px'
-                    }}>
-                        <div style={{ width: 48, height: 48, background: '#f3f4f6', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <User size={24} color="#111" />
-                        </div>
-                        <div>
-                            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#111', margin: '0 0 8px' }}>Dr. M. Praneesh</h3>
-                            <p style={{ fontSize: '0.9rem', color: '#6b7280', margin: 0, fontWeight: 500 }}>Programming Club Staff Coordinator</p>
-                        </div>
-                        <div style={{ marginTop: 'auto' }}>
-                            <CopyPhone number="+919629924052" display="+91 96299 24052" />
-                        </div>
-                    </motion.div>
 
-                    {/* Coordinator 3 */}
-                    <motion.div variants={fadeInUp} style={{
-                        background: '#fff', borderRadius: '24px', padding: '32px',
-                        boxShadow: '0 20px 40px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.05)',
-                        border: '1px solid rgba(0,0,0,0.02)',
-                        display: 'flex', flexDirection: 'column', gap: '24px'
-                    }}>
-                        <div style={{ width: 48, height: 48, background: '#f3f4f6', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <User size={24} color="#111" />
-                        </div>
-                        <div>
-                            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#111', margin: '0 0 8px' }}>Dhananjay R S</h3>
-                            <p style={{ fontSize: '0.9rem', color: '#6b7280', margin: 0, fontWeight: 500 }}>Vice Chairman of Programming Club</p>
-                        </div>
-                        <div style={{ marginTop: 'auto' }}>
-                            <CopyPhone number="+919345060349" display="+91 93450 60349" />
-                        </div>
-                    </motion.div>
                     {/* Location Card */}
                     <motion.div variants={fadeInUp} style={{
                         background: '#fff', borderRadius: '24px', padding: '8px',
@@ -258,9 +222,9 @@ const ContactSection = () => {
                             </div>
                             <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#111', margin: '0 0 16px' }}>Event Venue</h3>
                             <p style={{ color: '#4b5563', lineHeight: 1.7, margin: '0 0 32px', fontSize: '0.95rem' }}>
-                                <strong>Sri Ramakrishna College of Arts & Science</strong><br />
-                                Nava India, Avinashi Road<br />
-                                Coimbatore, Tamil Nadu 641006
+                                <strong>Hackathon 2027 Campus</strong><br />
+                                Venue Details<br />
+                                City, State 123456
                             </p>
                             
                             <div style={{ marginTop: 'auto' }}>

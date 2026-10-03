@@ -131,7 +131,7 @@ const PrizesPage = () => {
     { icon: '💼', title: 'Trackwise best performers will get internships', amount: '' },
   ];
 
-  const tickerItems = ['₹1.8L+ Prize Pool', 'Global Internship', 'Singapore Trip', '1:1 Mentorship', 'Open Innovation', '17 UN SDGs', 'SRCAS 2026', 'Aug 14'];
+  const tickerItems = ['₹1.8L+ Prize Pool', 'Global Internship', 'Singapore Trip', '1:1 Mentorship', 'Open Innovation', '17 UN SDGs', 'Hackathon 2027', 'Aug 14'];
 
   return (
     <div style={{ background: '#fff', color: '#111', fontFamily: "'Plus Jakarta Sans', sans-serif", overflowX: 'hidden' }}>
@@ -153,7 +153,7 @@ const PrizesPage = () => {
             transition={{ duration: 0.6 }}
             style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.24em', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', marginBottom: 24 }}
           >
-            SRCAS HACKATHON 3.0 — 2026
+            Hackathon 2027 — 2026
           </motion.p>
 
           {/* Big heading */}
@@ -424,7 +424,7 @@ const PrizesPage = () => {
           transition={{ duration: 0.7 }}
         >
           <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.24em', color: '#9ca3af', textTransform: 'uppercase', marginBottom: 20 }}>
-            Aug 14, 2026 · SRCAS, Coimbatore
+            Aug 14, 2026 · Coimbatore
           </p>
           <h2 style={{
             fontFamily: "'Plus Jakarta Sans', sans-serif",

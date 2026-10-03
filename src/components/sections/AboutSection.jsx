@@ -270,7 +270,7 @@ export default function AboutSection() {
                   Building the Future
                 </h2>
                 <p style={styles.bodyText}>
-                  We believe that the next generation of tech leaders will be defined not just by the code they write, but by the global problems they solve. In collaboration with Microsoft and Igenius AI, SRCAS is hosting a premier national-level hackathon dedicated to open innovation and real-world impact.
+                  We believe that the next generation of tech leaders will be defined not just by the code they write, but by the global problems they solve. In collaboration with Microsoft and Igenius AI, we are hosting a premier national-level hackathon dedicated to open innovation and real-world impact.
                 </p>
               </motion.div>
               <motion.div 

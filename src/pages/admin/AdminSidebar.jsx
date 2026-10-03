@@ -26,7 +26,7 @@ export default function AdminSidebar() {
       <div style={{ height:64, padding:'0 20px', borderBottom:'1px solid '+S.border, display:'flex', alignItems:'center', gap:12 }}>
         
         <div>
-          <div style={{ fontSize:14, fontWeight:800, color:S.t1 }}>SRCAS HACKATHON 3.0</div>
+          <div style={{ fontSize:14, fontWeight:800, color:S.t1 }}>Hackathon 2027</div>
           <div style={{ fontSize:10, fontWeight:600, color:S.t3, letterSpacing:'0.05em' }}>Admin Panel</div>
         </div>
       </div>

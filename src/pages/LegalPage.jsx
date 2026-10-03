@@ -60,7 +60,7 @@ export default function LegalPage() {
                 <p style={{ color: '#64748b', marginBottom: '32px' }}>Last updated: July 2026</p>
 
                 <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginTop: '32px', marginBottom: '12px' }}>1. Acceptance of Terms</h2>
-                <p>By registering for and participating in the SRCAS Hackathon 3.0 (accessible via hackathon2026.in), you agree to abide by these Terms and Conditions. If you do not agree with any part of these terms, you may not participate in the event.</p>
+                <p>By registering for and participating in the Hackathon 2027 (accessible via hackathon2026.in), you agree to abide by these Terms and Conditions. If you do not agree with any part of these terms, you may not participate in the event.</p>
 
                 <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginTop: '32px', marginBottom: '12px' }}>2. Eligibility and Team Formation</h2>
                 <ul style={{ paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -80,7 +80,7 @@ export default function LegalPage() {
                 </ul>
 
                 <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginTop: '32px', marginBottom: '12px' }}>4. Intellectual Property</h2>
-                <p>Teams retain full ownership of the intellectual property (IP), code, and prototypes they create during the hackathon. By participating, you grant SRCAS Hackathon 3.0 a non-exclusive, royalty-free license to use your project name, team name, and a description of your submission for promotional and reporting purposes.</p>
+                <p>Teams retain full ownership of the intellectual property (IP), code, and prototypes they create during the hackathon. By participating, you grant Hackathon 2027 a non-exclusive, royalty-free license to use your project name, team name, and a description of your submission for promotional and reporting purposes.</p>
 
                 <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginTop: '32px', marginBottom: '12px' }}>5. Media Release and Photography</h2>
                 <p>By attending the offline finale, you consent to being photographed, filmed, and/or recorded. You grant the organizers the right to use these media materials for promotional, educational, and marketing purposes without compensation.</p>
@@ -89,7 +89,7 @@ export default function LegalPage() {
                 <p>We are committed to providing a safe, inclusive, and harassment-free experience for everyone. Any form of harassment, discrimination, or unsportsmanlike conduct will result in immediate expulsion from the event. The decisions made by the judging panel are final and binding.</p>
 
                 <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginTop: '32px', marginBottom: '12px' }}>7. Limitation of Liability & Safety</h2>
-                <p>The organizers of SRCAS Hackathon 3.0 shall not be held liable for any direct, indirect, incidental, or consequential damages resulting from participation in the event, including but not limited to loss of data, hardware damage, or personal injury. Participants attending the offline finale are solely responsible for their personal belongings and equipment.</p>
+                <p>The organizers of Hackathon 2027 shall not be held liable for any direct, indirect, incidental, or consequential damages resulting from participation in the event, including but not limited to loss of data, hardware damage, or personal injury. Participants attending the offline finale are solely responsible for their personal belongings and equipment.</p>
 
                 <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginTop: '32px', marginBottom: '12px' }}>8. Right to Modify</h2>
                 <p>The organizing committee reserves the right to modify these terms, event rules, schedules, or prize structures at any time. Participants will be notified of any significant changes via the platform or registered email.</p>
@@ -101,7 +101,7 @@ export default function LegalPage() {
                 <p style={{ color: '#64748b', marginBottom: '32px' }}>Last updated: July 2026</p>
 
                 <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a', marginTop: '32px', marginBottom: '12px' }}>1. Information We Collect</h2>
-                <p>To facilitate the SRCAS Hackathon 3.0, we collect the following personal information from participants during the registration process on hackathon2026.in:</p>
+                <p>To facilitate the Hackathon 2027, we collect the following personal information from participants during the registration process on hackathon2026.in:</p>
                 <ul style={{ paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px' }}>
                   <li><strong>Identity Data:</strong> Full name, phone number, and email address.</li>
                   <li><strong>Academic Data:</strong> College name, state, city, department, year of study, and university registration numbers.</li>

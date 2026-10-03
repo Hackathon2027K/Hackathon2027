@@ -26,18 +26,8 @@ const SectionLabel = ({ children }) => (
   </div>
 );
 
-const studentOrganizers = [
-  { name: 'Raghul', role: 'Chairman', org: '@ ProClub SRCAS' },
-  { name: 'Dhananjay', role: 'Vice Chairman', org: '@ ProClub SRCAS' },
-  { name: 'Nivethika B', role: 'Secretary', org: '@ ProClub SRCAS' },
-  { name: 'Dhakshan', role: 'Joint Secretary', org: '@ ProClub SRCAS' },
-];
-
-const staffCoordinators = [
-  { name: 'Dr.N.Sumathi', role: 'Programming Club Staff Coordinator', org: 'SRCAS', image: sumathiImg },
-  { name: 'Dr. M. Praneesh', role: 'Programming Club Staff Coordinator', org: 'SRCAS', image: praneeshImg },
-  { name: 'Mr.S.Manoj', role: 'Programming Club Staff Coordinator', org: 'SRCAS', image: manojImg },
-];
+const studentOrganizers = [];
+const staffCoordinators = [];
 
 export default function HumansPage() {
   return (
@@ -53,7 +43,7 @@ export default function HumansPage() {
                 <span style={{ WebkitTextStroke: '2.5px #111', color: 'transparent' }}>Humans</span>
             </motion.h1>
             <motion.p {...fadeUp(0.2)} style={{ fontSize: '1.1rem', color: '#6b7280', maxWidth: 600, margin: '0', lineHeight: 1.6 }}>
-                The dedicated team working relentlessly behind the scenes to make SRCAS Hackathon 3.0 an unforgettable experience.
+                The dedicated team working relentlessly behind the scenes to make Hackathon 2027 an unforgettable experience.
             </motion.p>
         </div>
 
@@ -128,89 +118,7 @@ export default function HumansPage() {
           </motion.div>
         </div>
 
-        {/* 2. Student Organizers */}
-        <motion.div {...fadeUp(0.5)} style={{ marginBottom: 40 }}>
-            <SectionLabel>Student Organizers</SectionLabel>
-        </motion.div>
-        
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '24px', marginBottom: 80, padding: '0 10px' }}>
-            {studentOrganizers.map((m, i) => (
-                <motion.div
-                    key={i}
-                    {...fadeUp(0.5 + i * 0.1)}
-                    whileHover={{ y: -6, boxShadow: '0 15px 35px rgba(0,0,0,0.08)' }}
-                    style={{
-                        position: 'relative',
-                        flex: '1 1 240px',
-                        maxWidth: '400px',
-                        background: '#ffffff', 
-                        border: '1px solid #e5e7eb',
-                        borderRadius: '20px', padding: '20px', 
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
-                        textAlign: 'center', transition: 'all 0.3s ease',
-                        overflow: 'hidden'
-                    }}
-                >
-                    {/* Light Dot Pattern Background */}
-                    <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(0,0,0,0.04) 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', opacity: 1, pointerEvents: 'none' }} />
 
-                    {/* Image Container */}
-                    <div style={{ position: 'relative', zIndex: 1, width: '100%', aspectRatio: '1/1', background: '#f9fafb', border: '1px solid #f3f4f6', borderRadius: '16px', margin: '0 auto 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 48, fontWeight: 900, color: '#d1d5db', overflow: 'hidden' }}>
-                        {m.image ? (
-                            <img src={m.image} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                        ) : (
-                            m.name[0]
-                        )}
-                    </div>
-                    
-                    {/* Text Details */}
-                    <h3 style={{ position: 'relative', zIndex: 1, fontSize: '1.25rem', fontWeight: 800, color: '#111', margin: '0 0 8px', letterSpacing: '0.02em' }}>{m.name}</h3>
-                    <p style={{ position: 'relative', zIndex: 1, fontSize: '0.85rem', fontWeight: 600, color: '#0070f3', margin: '0 0 4px', lineHeight: 1.5, padding: '0 10px' }}>{m.role}</p>
-                    <p style={{ position: 'relative', zIndex: 1, fontSize: '0.8rem', color: '#6b7280', margin: 0, fontWeight: 500 }}>{m.org}</p>
-                </motion.div>
-            ))}
-        </div>
-
-        {/* 3. Staff Coordinators */}
-        <motion.div {...fadeUp(0.6)} style={{ marginBottom: 40 }}>
-            <SectionLabel>Staff Coordinators</SectionLabel>
-        </motion.div>
-        
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px', marginBottom: 40, padding: '0 10px' }}>
-            {staffCoordinators.map((m, i) => (
-                <motion.div
-                    key={i}
-                    {...fadeUp(0.6 + i * 0.1)}
-                    whileHover={{ y: -6, boxShadow: '0 15px 35px rgba(0,0,0,0.08)' }}
-                    style={{
-                        position: 'relative',
-                        background: '#ffffff', 
-                        border: '1px solid #e5e7eb',
-                        borderRadius: '20px', padding: '20px', 
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
-                        textAlign: 'center', transition: 'all 0.3s ease',
-                        overflow: 'hidden'
-                    }}
-                >
-                    {/* Light Dot Pattern Background */}
-                    <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(0,0,0,0.04) 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', opacity: 1, pointerEvents: 'none' }} />
-
-                    {/* Image Container */}
-                    <div style={{ position: 'relative', zIndex: 1, width: '100%', aspectRatio: '1/1', background: '#f9fafb', border: '1px solid #f3f4f6', borderRadius: '16px', margin: '0 auto 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 48, fontWeight: 900, color: '#d1d5db', overflow: 'hidden' }}>
-                        {m.image ? (
-                            <img src={m.image} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                        ) : (
-                            m.name[0]
-                        )}
-                    </div>
-                    
-                    {/* Text Details */}
-                    <h3 style={{ position: 'relative', zIndex: 1, fontSize: '1.25rem', fontWeight: 800, color: '#111', margin: '0 0 8px', letterSpacing: '0.02em' }}>{m.name}</h3>
-                    <p style={{ position: 'relative', zIndex: 1, fontSize: '0.85rem', fontWeight: 600, color: '#0070f3', margin: '0 0 4px', lineHeight: 1.5, padding: '0 10px' }}>{m.role}</p>
-                    <p style={{ position: 'relative', zIndex: 1, fontSize: '0.8rem', color: '#6b7280', margin: 0, fontWeight: 500 }}>{m.org}</p>
-                </motion.div>
-            ))}
-        </div>
 
       </div>
 

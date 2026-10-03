@@ -81,7 +81,7 @@ function SDGCard({ mode }) {
         <div style={{ display:'flex', alignItems:'center', gap:'8px' }}>
           <div style={{ width:28, height:28, borderRadius:'50%', background:'linear-gradient(135deg,#4C9F38,#26BDE2)', display:'flex', alignItems:'center', justifyContent:'center', color:'#fff', fontWeight:800, fontSize:'11px', flexShrink:0 }}>M</div>
           <div>
-            <div style={{ fontSize:'11px', fontWeight:700, color:'#111' }}>SRCAS Hackathon 3.0</div>
+            <div style={{ fontSize:'11px', fontWeight:700, color:'#111' }}>Hackathon 2027</div>
             <div style={{ fontSize:'10px', color:'#4C9F38', fontWeight:600 }}>in Association with iGenius - Authorized Microsoft Partner</div>
           </div>
         </div>
@@ -332,7 +332,7 @@ export default function AuthPage() {
         {isLogin ? 'Welcome back!' : 'Create an account'}
       </h1>
       <p style={{ fontSize:'13px', color:'#6b7280', margin:'0 0 24px', lineHeight:1.6 }}>
-        {isLogin ? 'Sign in to access your dashboard.' : 'Register to join SRCAS Hackathon 3.0.'}
+        {isLogin ? 'Sign in to access your dashboard.' : 'Register to join Hackathon 2027.'}
       </p>
 
       {/* ── Social buttons FIRST ── */}

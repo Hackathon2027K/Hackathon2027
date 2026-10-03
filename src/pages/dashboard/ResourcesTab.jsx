@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import OfficialPPT from '../../assets/PPT/SRCAS HACKATHON 3.0.pptx';
+import OfficialPPT from '../../assets/PPT/Hackathon 2027.pptx';
 import ProblemStatementPDF from '../../assets/PS_example/Hackathon Problem Statement 2026.pdf';
 
 const RESOURCES = [
@@ -32,7 +32,7 @@ const FAQS = [
     ),
   },
   {
-    q: "Who can participate in the SRCAS Hackathon 3.0?",
+    q: "Who can participate in the Hackathon 2027?",
     a: "The hackathon is open to all students, regardless of skill level. Whether you're a beginner exploring your first project or an experienced developer, you're welcome to participate.",
   },
   {
@@ -41,7 +41,7 @@ const FAQS = [
   },
   {
     q: "Can team members be from different colleges?",
-    a: "No. All team members must belong to the same college. However, students from different departments within the same college are allowed to form a team. Cross-college teams are not permitted for SRCAS Hackathon 3.0.",
+    a: "No. All team members must belong to the same college. However, students from different departments within the same college are allowed to form a team. Cross-college teams are not permitted for Hackathon 2027.",
   },
   {
     q: "Who is eligible to participate in the hackathon?",
@@ -52,7 +52,7 @@ const FAQS = [
     a: "No, participation is completely free. We believe innovation should be accessible to everyone.",
   },
   {
-    q: "What should I bring to the SRCAS Hackathon 3.0?",
+    q: "What should I bring to the Hackathon 2027?",
     a: "Please bring your laptop, charger, any hardware required for your project, and lots of creativity. Food, refreshments, Wi-Fi, and a comfortable workspace will be provided by the organizers.",
   },
   {
@@ -226,7 +226,7 @@ export default function ResourcesTab({ hasTeam, submissions }) {
                     <div style={{ width: 44, height: 44, borderRadius: 12, background: '#E5243B15', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}>📄</div>
                     <div>
                       <h2 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 800, color: '#111' }}>Official Rulebook</h2>
-                      <p style={{ margin: '2px 0 0', fontSize: '0.85rem', color: '#6b7280', fontWeight: 500 }}>SRCAS Hackathon 3.0</p>
+                      <p style={{ margin: '2px 0 0', fontSize: '0.85rem', color: '#6b7280', fontWeight: 500 }}>Hackathon 2027</p>
                     </div>
                   </div>
                   <button onClick={() => setShowRulebook(false)} style={{ background: 'none', border: 'none', fontSize: 28, cursor: 'pointer', color: '#9ca3af', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: 8 }}
@@ -255,7 +255,7 @@ export default function ResourcesTab({ hasTeam, submissions }) {
                   <h3 style={{ color: '#111', fontSize: '1.1rem', fontWeight: 800, letterSpacing: '-0.01em' }}>3. Submission & Development Rules</h3>
                   <ul style={{ paddingLeft: 20, marginBottom: 24 }}>
                     <li style={{ marginBottom: 6 }}><strong>Round 1 (Idea Submission):</strong> Teams must submit a 500-word Project Description and the official PPT format.</li>
-                    <li style={{ marginBottom: 6 }}><strong>Round 2 (Finale):</strong> Shortlisted teams will present their working prototypes offline at the SRCAS campus.</li>
+                    <li style={{ marginBottom: 6 }}><strong>Round 2 (Finale):</strong> Shortlisted teams will present their working prototypes offline at the Campus.</li>
                     <li style={{ marginBottom: 6 }}><strong>24-Hour Software Rule:</strong> All software coding and application development must take place exclusively during the 24-hour hackathon period. Bringing pre-written code, using proprietary existing projects, or plagiarism will lead to immediate disqualification.</li>
                     <li style={{ marginBottom: 6 }}><strong>Hardware & IoT Exception:</strong> If you are building a hardware-based project, you may procure the required devices, assemble, and test them before the Hackathon. However, during the 24-hour event, you are strictly expected to develop the software application, integrate it with your IoT devices, and demonstrate the final connected solution.</li>
                     <li><strong>Vibe Coding:</strong> "Vibe coding" (using AI-assisted coding tools and LLMs to help build your project) is completely allowed during the 24-hour hacking period.</li>

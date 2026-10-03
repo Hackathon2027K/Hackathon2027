@@ -194,7 +194,7 @@ const MarqueeItem = () => (
     <span style={{ color: '#d1d5db' }}>✦</span>
     <span>Singapore Trip</span>
     <span style={{ color: '#d1d5db' }}>✦</span>
-    <span>Aug 14 · SRCAS</span>
+    <span>Aug 14 · Hackathon 2027</span>
     <span style={{ color: '#d1d5db' }}>✦</span>
     <span>Open Innovation</span>
     <span style={{ color: '#d1d5db' }}>✦</span>
@@ -274,7 +274,7 @@ export default function Footer() {
             ref={giantTextRef}
             className="cf-giant-text absolute -bottom-[4vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none"
           >
-            SRCAS
+            Hack 2027
           </div>
 
           {/* ── 1. Marquee ── */}
@@ -368,7 +368,7 @@ export default function Footer() {
               <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#9ca3af' }}>Crafted with</span>
               <span className="cf-heartbeat" style={{ fontSize: '15px', color: '#ef4444' }}>❤</span>
               <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#9ca3af' }}>by</span>
-              <span style={{ fontSize: '12px', fontWeight: 900, color: '#111', marginLeft: 2 }}>SRCAS Prog. Club</span>
+              <span style={{ fontSize: '12px', fontWeight: 900, color: '#111', marginLeft: 2 }}>UD</span>
             </div>
 
             {/* Divider — desktop only */}

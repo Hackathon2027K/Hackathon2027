@@ -181,7 +181,7 @@ export default function HeroSection1() {
 
       {/* Ghost words in background */}
       <FloatingWord word="HACKATHON" x="2%"   y="12%"  fontSize="clamp(3rem,7vw,6rem)"  color="#111" delay={0.3} />
-      <FloatingWord word="SRCAS"     x="68%"  y="8%"   fontSize="clamp(2rem,5vw,4.5rem)" color="#2563EB" delay={0.5} />
+      <FloatingWord word="Hackathon 2027"     x="68%"  y="8%"   fontSize="clamp(2rem,5vw,4.5rem)" color="#2563EB" delay={0.5} />
       <FloatingWord word="2026"      x="5%"   y="68%"  fontSize="clamp(2rem,5vw,4rem)"  color="#111" delay={0.7} />
       <FloatingWord word="SDG"       x="72%"  y="75%"  fontSize="clamp(2rem,4vw,3.5rem)" color="#111" delay={0.4} />
 
@@ -251,15 +251,8 @@ export default function HeroSection1() {
           </div>
           <div style={{ width: "1px", height: "30px", background: "#e5e7eb" }}></div>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <span style={{ fontSize: "0.9rem", color: "#6b7280", textTransform: "uppercase", fontWeight: 600, display: "flex", flexDirection: "column" }}>
+            <span style={{ fontSize: "0.9rem", color: "#6b7280", textTransform: "uppercase", fontWeight: 600, display: "flex", flexDirection: "column", paddingRight: 6 }}>
               Organized by
-            </span>
-            <img src={srcasLogo} alt="SRCAS" style={{ height: "32px", objectFit: "contain" }} />
-          </div>
-          <div style={{ width: "1px", height: "30px", background: "#e5e7eb" }}></div>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <span style={{ fontSize: "0.9rem", color: "#6b7280", textTransform: "uppercase", fontWeight: 600, display: "flex", flexDirection: "column" }}>
-              Partner
             </span>
             <img src={igeniusLogo} alt="igeniusAI" style={{ height: "24px", objectFit: "contain" }} />
             <span style={{ fontSize: "0.9rem", color: "#6b7280", textTransform: "uppercase", fontWeight: 600, display: "flex", flexDirection: "column" }}>
@@ -330,7 +323,7 @@ export default function HeroSection1() {
           </span>
           {/* <span style={{ width: 1, height: 10, background: '#e5e7eb', display: 'inline-block' }} />
           <span style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', color: '#9ca3af', textTransform: 'uppercase' }}>
-            SRCAS × Microsoft
+            Hackathon 2027 × Microsoft
           </span> */}
         </motion.div>
         
@@ -465,7 +458,7 @@ export default function HeroSection1() {
           </div>
           <div style={{ width: "1px", height: "20px", background: "#e5e7eb" }}></div>
           <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.75rem", fontWeight: 700, color: "#111" }}>
-            <StarIcon size={18} /> SRCAS 2026
+            <StarIcon size={18} /> Hackathon 2027
           </div>
           <div style={{ width: "1px", height: "20px", background: "#e5e7eb" }}></div>
           <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.75rem", fontWeight: 700, color: "#111" }}>

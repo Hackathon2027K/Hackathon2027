@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../../lib/supabaseClient';
 import { sanitizeInput } from '../../lib/security';
-import OfficialPPT from '../../assets/PPT/SRCAS HACKATHON 3.0.pptx';
+import OfficialPPT from '../../assets/PPT/Hackathon 2027.pptx';
 
 
 const card = (extra = {}) => ({ background: '#fff', borderRadius: 14, padding: '22px 24px', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', border: '1.5px solid #f0f0f0', ...extra });
@@ -97,7 +97,7 @@ export default function SubmissionTab({ hasTeam, teamData, teamMembers, submissi
         if (!form.pdf.type.includes('pdf')) {
           throw new Error('Only PDF files are allowed for presentation uploads.');
         }
-        if (form.pdf.size > 3 * 1024 * 1024) {
+        if (form.pdf.size > 30 * 1024 * 1024) {
           throw new Error('File size is too large. Please compress your PDF to under 3MB and try again.');
         }
 
@@ -565,7 +565,13 @@ export default function SubmissionTab({ hasTeam, teamData, teamMembers, submissi
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
           {step < STEPS.length - 1
             ? <button onClick={handleNext} style={{ padding: '12px 24px', borderRadius: 10, border: 'none', background: '#4C9F38', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', textAlign: 'center', whiteSpace: 'nowrap' }}>Next →</button>
-            : <button disabled={submitting} onClick={handleSubmit} style={{ padding: '12px 28px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg,#4C9F38,#3d8a2e)', color: '#fff', fontSize: 13, fontWeight: 700, cursor: submitting ? 'not-allowed' : 'pointer', boxShadow: '0 4px 14px rgba(76,159,56,0.3)', opacity: submitting ? 0.7 : 1, textAlign: 'center', whiteSpace: 'nowrap' }}>
+            : <button disabled={submitting} onClick={handleSubmit} style={{ padding: '12px 28px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg,#4C9F38,#3d8a2e)', color: '#fff', fontSize: 13, fontWeight: 700, cursor: submitting ? 'not-allowed' : 'pointer', boxShadow: '0 4px 14px rgba(76,159,56,0.3)', opacity: submitting ? 0.7 : 1, textAlign: 'center', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <style>{`@keyframes spinner { to { transform: rotate(360deg); } }`}</style>
+              {submitting && (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" style={{ animation: 'spinner 1s linear infinite' }}>
+                  <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+                </svg>
+              )}
               {submitting ? 'Uploading...' : 'Submit Project 🚀'}
             </button>
           }

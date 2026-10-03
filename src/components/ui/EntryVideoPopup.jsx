@@ -91,7 +91,7 @@ export default function EntryVideoPopup() {
                   }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                       <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ef4444', boxShadow: '0 0 6px #ef4444', animation: 'pulse-dot 1.4s ease-in-out infinite' }} />
-                      <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>SRCAS Hackathon 3.0</span>
+                      <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Hackathon 2027</span>
                     </div>
                     <button 
                       onClick={closeVideo} 
@@ -111,40 +111,13 @@ export default function EntryVideoPopup() {
                   <div style={{ position: 'relative', aspectRatio: '16/9', background: '#000' }}>
                     <iframe 
                       width="100%" height="100%" 
-                      src="https://www.youtube.com/embed/xHmikF5qzXc?autoplay=1" 
+                      src="https://www.youtube.com/embed/xHmikF5qzXc?autoplay=1&controls=0&rel=0&modestbranding=1"
                       title="YouTube video player" 
                       frameBorder="0" 
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                       allowFullScreen
                       style={{ display: 'block' }}
                     />
-                  </div>
-                  
-                  {/* Bottom bar */}
-                  <div style={{
-                    padding: '16px 20px', background: '#111', borderTop: '1px solid rgba(255,255,255,0.07)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12,
-                  }}>
-                    <div>
-                      <p style={{ margin: 0, fontSize: '0.95rem', fontWeight: 800, color: '#fff', letterSpacing: '-0.01em', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Aug 14, 2026 · SRCAS, Coimbatore</p>
-                      <p style={{ margin: '2px 0 0', fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>India's premier national-level hackathon</p>
-                    </div>
-                    <div style={{ display: 'flex', gap: 10 }}>
-                      <a
-                        href={user ? "/dashboard" : "/register"}
-                        onClick={closeVideo}
-                        style={{
-                          padding: '9px 22px', borderRadius: 100, background: '#fff', color: '#111',
-                          fontSize: '0.8rem', fontWeight: 800, textDecoration: 'none', cursor: 'pointer',
-                          fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: '0.04em',
-                          transition: 'background 0.2s, transform 0.15s', display: 'inline-flex', alignItems: 'center', gap: 6,
-                        }}
-                        onMouseEnter={e => { e.currentTarget.style.background = '#e5e5e5'; e.currentTarget.style.transform = 'scale(1.03)'; }}
-                        onMouseLeave={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.transform = 'scale(1)'; }}
-                      >
-                        {user ? "📊 My Dashboard" : "🚀 Register Now"}
-                      </a>
-                    </div>
                   </div>
                 </motion.div>
               )}

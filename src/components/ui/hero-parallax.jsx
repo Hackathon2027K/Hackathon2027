@@ -147,11 +147,11 @@ export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto px-4 md:px-16 w-full min-h-[100vh] flex flex-col justify-center items-center text-center z-10">
       <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-neutral-900 leading-none md:leading-tight">
-        SRCAS Hackathon's <br/> Highlights
+        Hackathon 2027's <br/> Highlights
       </h1>
 
       <p className="max-w-2xl text-sm sm:text-base md:text-xl mt-4 md:mt-6 text-neutral-600 leading-relaxed">
-        Explore memorable moments from SRCAS Hackathon's <br/>
+        Explore memorable moments from Hackathon 2027's <br/>
         Showcasing innovation, creativity, and teamwork <br/>
         Relive the energy and excitement of the event
       </p>

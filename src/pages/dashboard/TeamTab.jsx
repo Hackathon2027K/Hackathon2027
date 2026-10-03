@@ -384,7 +384,7 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
           {/* Academic Details */}
           <div>
             <label style={styles.label}>College / Organization</label>
-            <input type="text" value={member.college_name} onChange={e => updateMember('college_name', e.target.value)} style={styles.input} placeholder="E.g., SRCAS" />
+            <input type="text" value={member.college_name} onChange={e => updateMember('college_name', e.target.value)} style={styles.input} placeholder="E.g., Your College" />
           </div>
           <div>
             <label style={styles.label}>Register Number</label>

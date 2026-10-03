@@ -224,11 +224,7 @@ export default function HeroSection7() {
               Organized by
             </span>
             
-            <div className="logo-wrap-srcas">
-              <img src={srcasLogo} alt="SRCAS" className="hero-logo-img logo-srcas" style={{ objectFit: "contain" }} />
-            </div>
-            
-            <div className="hero-logo-divider" style={{ width: '1px', background: '#e5e7eb' }}></div>
+
             
             <div className="logo-wrap-igenius">
               <img src={igeniusLogo} alt="igeniusAI" className="hero-logo-img logo-igenius" style={{ objectFit: "contain" }} />
@@ -373,8 +369,7 @@ export default function HeroSection7() {
               justifyContent: 'center',
               gap: '10px'
             }}>
-              <span>SRCAS</span>
-              <span style={{ color: '#0562f8ff', fontFamily: theme.fonts.pixel, letterSpacing: '0.02em', textTransform: 'none' }}>Hackathon 3.0!</span>
+              <span style={{ color: '#0562f8ff', fontFamily: theme.fonts.pixel, letterSpacing: '0.02em', textTransform: 'none' }}>Hackathon 2027!</span>
             </h2>
           </div>
 
