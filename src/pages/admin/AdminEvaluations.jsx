@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabaseClient';
+import { useAdminAuth } from '../../lib/useAdminAuth';
 import { FileText, Search, ChevronDown, Download, ChevronRight, MoreVertical, ChevronLeft, Star, Clock, XCircle, Eye, Calendar as CalendarIcon, ClipboardCheck, Filter } from 'lucide-react';
 
 const S = {
@@ -13,8 +14,7 @@ const S = {
 
 export default function AdminEvaluations() {
   const navigate = useNavigate();
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const { isAdmin, loadingAuth: loading } = useAdminAuth();
   const [evaluations, setEvaluations] = useState([]);
   
   // Filters and Pagination
@@ -75,18 +75,11 @@ export default function AdminEvaluations() {
       return { ...t, leader };
     });
     setTeams(enhancedTeams);
-    setLoading(false);
   }, []);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { user }, error } = await supabase.auth.getUser();
-      if (error || !user) { navigate('/register'); return; }
-      const { data: adminList } = await supabase.from('admins').select('email');
-      if (adminList && adminList.length > 0) { setIsAdmin(true); fetchData(); } else { alert("Not admin!"); navigate('/dashboard'); }
-    };
-    checkAuth();
-  }, [navigate, fetchData]);
+    if (isAdmin) fetchData();
+  }, [isAdmin, fetchData]);
 
 
 

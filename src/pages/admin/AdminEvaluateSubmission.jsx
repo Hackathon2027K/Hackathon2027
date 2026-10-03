@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { supabase } from '../../lib/supabaseClient';
+import { useAdminAuth } from '../../lib/useAdminAuth';
 import { Search, ChevronDown, ChevronRight, ChevronLeft, Check, Leaf, ExternalLink, Bold, Italic, Underline, List, Link2, Mail, Phone, User, MapPin, Building2, Hash } from 'lucide-react';
 
 const S = {
@@ -14,8 +15,8 @@ const S = {
 export default function AdminEvaluateSubmission() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [adminName, setAdminName] = useState('Admin');
+  const { isAdmin, loadingAuth, adminEmail } = useAdminAuth();
+  const adminName = adminEmail || 'Admin';
   const [loading, setLoading] = useState(true);
   const [submission, setSubmission] = useState(null);
   const [team, setTeam] = useState(null);
@@ -73,14 +74,12 @@ export default function AdminEvaluateSubmission() {
       setLoading(false);
     };
 
-    const checkAuth = async () => {
-      const { data: { user }, error } = await supabase.auth.getUser();
-      if (error || !user) { navigate('/register'); return; }
-      const { data: adminList } = await supabase.from('admins').select('email');
-      if (adminList && adminList.length > 0) { setIsAdmin(true); fetchData(); } else { alert("Not admin!"); navigate('/dashboard'); }
-    };
-    checkAuth();
-  }, [navigate, id]);
+    fetchData();
+  }, [id]);
+
+  useEffect(() => {
+    if (!loadingAuth && !isAdmin) navigate('/dashboard');
+  }, [loadingAuth, isAdmin, navigate]);
   if (loading) return <div style={{minHeight:'100vh',display:'flex',alignItems:'center',justifyContent:'center',background:S.bg}}><div style={{width:40,height:40,border:'3px solid '+S.primary,borderTopColor:'transparent',borderRadius:'50%',animation:'spin 1s linear infinite'}}/></div>;
   if (!isAdmin) return null;
 

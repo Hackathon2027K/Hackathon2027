@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabaseClient';
+import { useAdminAuth } from '../../lib/useAdminAuth';
 import { RefreshCw, Users, Flag, FileText, TrendingUp, ChevronRight } from 'lucide-react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
@@ -69,7 +70,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 export default function AdminAnalytics() {
   const navigate = useNavigate();
-  const [isAdmin, setIsAdmin] = useState(false);
+  const { isAdmin, loadingAuth } = useAdminAuth();
   const [loading, setLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(new Date());
 
@@ -187,15 +188,8 @@ export default function AdminAnalytics() {
   }, [processData]);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { user }, error } = await supabase.auth.getUser();
-      if (error || !user) { navigate('/register'); return; }
-      const { data: adminList } = await supabase.from('admins').select('email');
-      if (adminList && adminList.length > 0) { setIsAdmin(true); fetchAll(); }
-      else { alert('Not admin!'); navigate('/dashboard'); }
-    };
-    checkAuth();
-  }, [navigate, fetchAll]);
+    if (isAdmin) fetchAll();
+  }, [isAdmin, fetchAll]);
 
   const subRate = counts.teams ? ((counts.subs / counts.teams) * 100).toFixed(1) : 0;
 

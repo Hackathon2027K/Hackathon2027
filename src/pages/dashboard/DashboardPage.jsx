@@ -49,35 +49,52 @@ export default function DashboardPage() {
         const { data: annData } = await supabase.from('announcements').select('*').order('created_at', { ascending: false });
         if (annData) setAnnouncements(annData);
 
-        const { data: team, error: teamError } = await supabase
-          .from('teams')
-          .select('*')
-          .eq('leader_id', user.id)
-          .single();
+        // Find team: look up team_members where email = user.email AND is_leader = true
+        // (teams.leader_id was removed — spec requires team leader lookup via team_members)
+        const { data: leaderRow, error: leaderError } = await supabase
+          .from('team_members')
+          .select('team_id')
+          .eq('email', user.email)
+          .eq('is_leader', true)
+          .maybeSingle();
 
-        if (teamError && teamError.code !== 'PGRST116') {
-          throw teamError;
+        if (leaderError && leaderError.code !== 'PGRST116') {
+          throw leaderError;
         }
 
-        if (team) {
-          setHasTeam(true);
-          setTeamData(team);
-
-          const { data: members, error: membersError } = await supabase
-            .from('team_members')
+        if (leaderRow?.team_id) {
+          const { data: team, error: teamError } = await supabase
+            .from('teams')
             .select('*')
-            .eq('team_id', team.id);      
-          
-          if (membersError) throw membersError;
-          setTeamMembers(members);
+            .eq('id', leaderRow.team_id)
+            .single();
 
-          const { data: subs, error: subsError } = await supabase
-            .from('submissions')
-            .select('*')
-            .eq('team_id', team.id);
+          if (teamError && teamError.code !== 'PGRST116') {
+            throw teamError;
+          }
+
+          if (team) {
+            setHasTeam(true);
+            setTeamData(team);
+
+            const { data: members, error: membersError } = await supabase
+              .from('team_members')
+              .select('*')
+              .eq('team_id', team.id);      
             
-          if (subsError) throw subsError;
-          setSubmissions(subs);
+            if (membersError) throw membersError;
+            setTeamMembers(members);
+
+            const { data: subs, error: subsError } = await supabase
+              .from('submissions')
+              .select('*')
+              .eq('team_id', team.id);
+              
+            if (subsError) throw subsError;
+            setSubmissions(subs);
+          } else {
+            setHasTeam(false);
+          }
         } else {
           setHasTeam(false);
         }

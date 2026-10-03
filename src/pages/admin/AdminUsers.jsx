@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabaseClient';
+import { useAdminAuth } from '../../lib/useAdminAuth';
 import { Users, Flag, BookOpen, Shield, Search, ChevronDown, Download, ChevronRight, Plus, ChevronLeft, Eye, CheckCircle, X, Clock } from 'lucide-react';
 
 const S = {
@@ -13,8 +14,7 @@ const S = {
 
 export default function AdminUsers() {
   const navigate = useNavigate();
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const { isAdmin, loadingAuth: loading, adminEmail } = useAdminAuth();
   const [members, setMembers] = useState([]);
   const [teams, setTeams] = useState([]);
   
@@ -34,7 +34,6 @@ export default function AdminUsers() {
   const [idModal, setIdModal] = useState(null);
   const [verifyConfirmed, setVerifyConfirmed] = useState(false);
   const [verifying, setVerifying] = useState(false);
-  const [adminEmail, setAdminEmail] = useState('');
 
   const fetchData = useCallback(async () => {
     const { count: total } = await supabase.from('team_members').select('*', { count: 'exact', head: true });
@@ -53,19 +52,11 @@ export default function AdminUsers() {
       }
     }
     setTeams(allTeams);
-    setLoading(false);
   }, []);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { user }, error } = await supabase.auth.getUser();
-      if (error || !user) { navigate('/register'); return; }
-      setAdminEmail(user.email);
-      const { data: adminList } = await supabase.from('admins').select('email');
-      if (adminList && adminList.length > 0) { setIsAdmin(true); fetchData(); } else { alert("Not admin!"); navigate('/dashboard'); }
-    };
-    checkAuth();
-  }, [navigate, fetchData]);
+    if (isAdmin) fetchData();
+  }, [isAdmin, fetchData]);
 
 
   const buildQuery = (isExport = false) => {

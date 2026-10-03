@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabaseClient';
+import { useAdminAuth } from '../../lib/useAdminAuth';
 import { Users, Flag, FileText, CheckSquare, Shield, Search, ChevronDown, Megaphone, ChevronRight } from 'lucide-react';
 
 // Style constants
@@ -12,12 +13,10 @@ const S = {
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [loadingAuth, setLoadingAuth] = useState(true);
+  const { isAdmin, loadingAuth, adminEmail } = useAdminAuth();
   const [teams, setTeams] = useState([]);
   const [members, setMembers] = useState([]);
   const [submissions, setSubmissions] = useState([]);
-  const [adminEmail, setAdminEmail] = useState('');
   const [showEmail, setShowEmail] = useState(false);
   const [exactCounts, setExactCounts] = useState({ teams: 0, members: 0, subs: 0, evals: 0 });
 
@@ -31,26 +30,18 @@ export default function AdminDashboard() {
     ]);
     setExactCounts({ teams: cT.count || 0, members: cM.count || 0, subs: cS.count || 0, evals: cE.count || 0 });
 
-    // 2. Fetch data for charts & tables
+    // 2. Fetch recent data for charts & tables (paginated — last 50 for charts)
     const [{ data: t }, { data: m }, { data: s }] = await Promise.all([
-      supabase.from('teams').select('*').order('created_at', { ascending: false }),
-      supabase.from('team_members').select('*').order('created_at', { ascending: false }),
-      supabase.from('submissions').select('*').order('created_at', { ascending: false }),
+      supabase.from('teams').select('*').order('created_at', { ascending: false }).limit(50),
+      supabase.from('team_members').select('id,created_at,team_id').order('created_at', { ascending: false }).limit(500),
+      supabase.from('submissions').select('*').order('created_at', { ascending: false }).limit(100),
     ]);
     if (t) setTeams(t); if (m) setMembers(m); if (s) setSubmissions(s);
   }, []);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { user }, error } = await supabase.auth.getUser();
-      if (error || !user) { navigate('/register'); return; }
-      const { data: adminList } = await supabase.from('admins').select('email');
-      setAdminEmail(user.email);
-      if (adminList && adminList.length > 0) { setIsAdmin(true); fetchData(); } else { alert("Not admin!"); navigate('/dashboard'); }
-      setLoadingAuth(false);
-    };
-    checkAuth();
-  }, [navigate, fetchData]);
+    if (isAdmin) fetchData();
+  }, [isAdmin, fetchData]);
 
   // eslint-disable-next-line no-unused-vars
   const exportCSV = () => {

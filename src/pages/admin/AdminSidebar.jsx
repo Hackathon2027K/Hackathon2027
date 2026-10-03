@@ -1,5 +1,6 @@
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { Home, Users, Flag, CheckSquare, Bell, LayoutDashboard, LogOut, FileText, TrendingUp } from 'lucide-react';
+import { supabase } from '../../lib/supabaseClient';
 
 const S = {
   card: '#FFFFFF', border: '#E5E7EB', primary: '#6C4EFF',
@@ -50,7 +51,7 @@ export default function AdminSidebar() {
         <button onClick={() => navigate('/')} style={{ display:'flex', alignItems:'center', gap:10, padding:'10px 14px', borderRadius:10, fontSize:13, fontWeight:600, color:S.t2, background:'transparent', border:'none', cursor:'pointer' }}>
           <LayoutDashboard size={18}/> Back to Site
         </button>
-        <button onClick={() => navigate('/dashboard')} style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:8, padding:'10px 14px', borderRadius:10, fontSize:13, fontWeight:700, color:'#DC2626', background:'#FEF2F2', border:'1px solid #FECACA', cursor:'pointer' }}>
+        <button onClick={async () => { await supabase.auth.signOut(); navigate('/register'); }} style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:8, padding:'10px 14px', borderRadius:10, fontSize:13, fontWeight:700, color:'#DC2626', background:'#FEF2F2', border:'1px solid #FECACA', cursor:'pointer' }}>
           <LogOut size={16}/> Logout
         </button>
       </div>
