@@ -305,7 +305,7 @@ export default function OverviewTab({ hasTeam, teamData, teamMembers, submission
           <div style={{ display:'flex', flexDirection:'column', gap:16, flex:1 }}>
             {teamMembers?.length > 0 ? teamMembers.map((m, i) => {
               const isMe = m.email === user?.email;
-              const isLeader = m.email === user?.email || m.id === teamData?.leader_id;
+              const isLeader = m.email === user?.email || m.is_leader;
               const colors = [
                 { bg:'#10b981', labelBg:'#ecfdf5', labelColor:'#10b981' },
                 { bg:'#8b5cf6', labelBg:'#f3e8ff', labelColor:'#7e22ce' },

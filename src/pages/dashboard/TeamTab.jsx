@@ -95,7 +95,7 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
   const [showIdPopup, setShowIdPopup] = useState(false);
 
   const startEditTeam = (stepToOpen = 0) => {
-    const leader = teamMembers?.find(m => m.id === teamData?.leader_id) || teamMembers?.find(m => m.email === user?.email);
+    const leader = teamMembers?.find(m => m.is_leader) || teamMembers?.find(m => m.email === user?.email);
     const teammates = teamMembers?.filter(m => m.id !== leader?.id) || [];
 
     const parseLocation = (loc) => {
@@ -226,6 +226,18 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
         if (teamErr) throw teamErr;
         finalTeamData = { ...teamData, team_name: cleanTeamName };
       } else {
+        // Guard: check if the user already has a team (avoids duplicate leader_id key error)
+        const { data: existingLeaderRow } = await supabase
+          .from('team_members')
+          .select('team_id')
+          .eq('email', user.email)
+          .eq('is_leader', true)
+          .maybeSingle();
+
+        if (existingLeaderRow?.team_id) {
+          throw new Error('You have already created a team. Please refresh the page to see your existing team.');
+        }
+
         const { data: team, error: teamErr } = await supabase.from('teams').insert({
           team_name: cleanTeamName
         }).select().single();
@@ -588,7 +600,7 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
   }
 
   // --- SUMMARY VIEW (After Registration) ---
-  const teamLeader = teamMembers.find(m => m.id === teamData.leader_id) || teamMembers.find(m => m.email === user.email);
+  const teamLeader = teamMembers.find(m => m.is_leader) || teamMembers.find(m => m.email === user.email);
   const leaderName = teamLeader?.full_name || 'Leader';
   const registeredDate = teamData.created_at ? new Date(teamData.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'N/A';
   // const missingIdCardsCount = teamMembers.filter(m => !m.id_card_front_url || !m.id_card_back_url).length;
@@ -669,7 +681,7 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
             {teamMembers.map((m, idx) => {
-              const isLeader = m.id === teamData.leader_id || m.email === user.email;
+              const isLeader = m.is_leader || m.email === user.email;
               return (
                 <div key={m.id || idx} style={{ display: 'flex', alignItems: 'flex-start', gap: 16, padding: '16px 0', borderBottom: idx !== teamMembers.length - 1 ? '1px solid #f3f4f6' : 'none' }}>
                   <div style={{ width: 44, height: 44, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 800, fontSize: 18, flexShrink: 0, background: isLeader ? '#10b981' : '#34d399' }}>
