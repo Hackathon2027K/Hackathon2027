@@ -227,7 +227,6 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
         finalTeamData = { ...teamData, team_name: cleanTeamName };
       } else {
         const { data: team, error: teamErr } = await supabase.from('teams').insert({
-          leader_id: user.id,
           team_name: cleanTeamName
         }).select().single();
         if (teamErr) throw teamErr;
