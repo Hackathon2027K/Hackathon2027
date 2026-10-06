@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useAuth } from "../../lib/useAuth";
+import { APP_CONFIG } from "../../config";
 
 /* ─────────────────────────────────────────
    Icons (B&W inline SVG)
@@ -42,28 +43,28 @@ const IconTrophy = () => (
 ───────────────────────────────────────── */
 const EVENTS = [
   {
-    index: 0, num: "01", day: "07", month: "JUN", year: "2026",
+    index: 0, num: "01", day: APP_CONFIG.TIMELINE.REGISTRATION_OPEN.day, month: APP_CONFIG.TIMELINE.REGISTRATION_OPEN.month, year: APP_CONFIG.TIMELINE.REGISTRATION_OPEN.year,
     title: "Registration Opens",
     desc: "Portal goes live. Assemble your team and lock in your spot before it fills up.",
     tag: "Opens", tagColor: "#111", tagBg: "#f5f5f5", tagBorder: "#e0e0e0",
     Icon: IconRegisterOpen,
   },
   {
-    index: 1, num: "02", day: "25", month: "JUL", year: "2026",
+    index: 1, num: "02", day: APP_CONFIG.TIMELINE.IDEA_SUBMISSION.day, month: APP_CONFIG.TIMELINE.IDEA_SUBMISSION.month, year: APP_CONFIG.TIMELINE.IDEA_SUBMISSION.year,
     title: "Idea (PPT) Submission",
     desc: "Final date to submit your initial idea and presentation deck.",
     tag: "Deadline", tagColor: "#111", tagBg: "#f5f5f5", tagBorder: "#e0e0e0",
     Icon: IconDeadline,
   },
   {
-    index: 2, num: "03", day: "07", month: "AUG", year: "2026",
+    index: 2, num: "03", day: APP_CONFIG.TIMELINE.SHORTLIST_ANNOUNCED.day, month: APP_CONFIG.TIMELINE.SHORTLIST_ANNOUNCED.month, year: APP_CONFIG.TIMELINE.SHORTLIST_ANNOUNCED.year,
     title: "Shortlisted Teams Announced",
     desc: "Selected teams notified and briefed on problem statements for the final round.",
     tag: "Announcement", tagColor: "#111", tagBg: "#f5f5f5", tagBorder: "#e0e0e0",
     Icon: IconAnnounce,
   },
   {
-    index: 3, num: "04", day: "14", month: "AUG", year: "2026",
+    index: 3, num: "04", day: APP_CONFIG.TIMELINE.GRAND_FINALE.day, month: APP_CONFIG.TIMELINE.GRAND_FINALE.month, year: APP_CONFIG.TIMELINE.GRAND_FINALE.year,
     title: "Grand Final",
     desc: "24 hours of intense hacking, live judging by industry experts, and the grand award ceremony.",
     tag: "Main Event", tagColor: "#fff",
@@ -408,7 +409,7 @@ function CTABanner({ mobile }) {
         }}>
           Don't wait — spots fill fast.<br />
           <span style={{ color: "rgba(255,255,255,0.42)", fontWeight: 500, fontSize: "0.88em" }}>
-            Registration closes July 25, 2026.
+            Registration closes {APP_CONFIG.TIMELINE.REGISTRATION_CLOSE.text}.
           </span>
         </p>
       </div>

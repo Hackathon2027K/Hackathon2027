@@ -4,12 +4,14 @@ import EventTimeline from '../../components/EventTimeline';
 import { motion, AnimatePresence } from 'framer-motion';
 import OfficialPPT from '../../assets/PPT/Hackathon 2027.pptx';
 
+import { APP_CONFIG } from '../../config';
+
 const TIMELINE_STEPS = [
-  { title:'Registration', date:'Jun 21' },
-  { title:'Team Confirmation', date:'Jul 25' },
-  { title:'Idea Submission', date:'Jul 25' },
-  { title:'Shortlist Announced', date:'Aug 7' },
-  { title:'Grand Finale', date:'Aug 14' },
+  { title:'Registration', date:APP_CONFIG.TIMELINE.REGISTRATION_OPEN.short },
+  { title:'Team Confirmation', date:APP_CONFIG.TIMELINE.REGISTRATION_CLOSE.short },
+  { title:'Idea Submission', date:APP_CONFIG.TIMELINE.IDEA_SUBMISSION.short },
+  { title:'Shortlist Announced', date:APP_CONFIG.TIMELINE.SHORTLIST_ANNOUNCED.short },
+  { title:'Grand Finale', date:APP_CONFIG.TIMELINE.GRAND_FINALE.short },
 ];
 
 const card = (extra={}) => ({ background:'#fff', borderRadius:16, padding:'24px', boxShadow:'0 1px 4px rgba(0,0,0,0.06)', border:'1px solid #f3f4f6', ...extra });
@@ -305,7 +307,7 @@ export default function OverviewTab({ hasTeam, teamData, teamMembers, submission
           <div style={{ display:'flex', flexDirection:'column', gap:16, flex:1 }}>
             {teamMembers?.length > 0 ? teamMembers.map((m, i) => {
               const isMe = m.email === user?.email;
-              const isLeader = m.email === user?.email || m.id === teamData?.leader_id;
+              const isLeader = m.email === user?.email || m.is_leader;
               const colors = [
                 { bg:'#10b981', labelBg:'#ecfdf5', labelColor:'#10b981' },
                 { bg:'#8b5cf6', labelBg:'#f3e8ff', labelColor:'#7e22ce' },

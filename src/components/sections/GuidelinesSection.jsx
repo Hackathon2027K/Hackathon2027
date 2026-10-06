@@ -6,8 +6,7 @@ import {
   Clock, UserPlus, FileText, Unlock, Badge,
   Users, Coffee, Building, MapPin, ShieldCheck
 } from 'lucide-react';
-
-
+import { APP_CONFIG } from '../../config';
 const SDG_IMAGES = {
   1: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Sustainable_Development_Goal_01NoPoverty.svg/960px-Sustainable_Development_Goal_01NoPoverty.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20240924093018%22,",
   2: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Sustainable_Development_Goal_02ZeroHunger.svg/960px-Sustainable_Development_Goal_02ZeroHunger.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20240924093219",
@@ -117,7 +116,7 @@ const guidelinesPart1 = [
 const guidelinesPart2 = [
   {
     id: '06', title: 'Form Team',
-    description: 'Team up with 2-4 members from the same college; join our community to find teammates and get the latest updates!',
+    description: `Team up with ${APP_CONFIG.MIN_TEAM_SIZE}-${APP_CONFIG.MAX_TEAM_SIZE} members from the same college; join our community to find teammates and get the latest updates!`,
     icon: Users
   },
   {
@@ -127,17 +126,17 @@ const guidelinesPart2 = [
   },
   {
     id: '08', title: 'In-person Event',
-    description: 'Hackathon 2027 is an in-person (offline) hackathon event at Coimbatore.',
+    description: `${APP_CONFIG.EVENT_NAME} is an in-person (offline) hackathon event at ${APP_CONFIG.VENUE}.`,
     icon: Building
   },
   {
     id: '09', title: 'Venue',
-    description: 'Coimbatore awaits—explore our beautiful campus and bring innovative ideas to life.',
+    description: `${APP_CONFIG.VENUE} awaits—explore our beautiful campus and bring innovative ideas to life.`,
     icon: MapPin
   },
   {
     id: '10', title: 'Safe and Secure',
-    description: 'Organized by Sri Ramakrishna College of Arts and Science for an inclusive and secure environment for everyone.',
+    description: `Organized by ${APP_CONFIG.ORGANIZERS} for an inclusive and secure environment for everyone.`,
     icon: ShieldCheck
   }
 ];

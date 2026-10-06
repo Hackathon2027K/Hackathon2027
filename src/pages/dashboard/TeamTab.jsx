@@ -4,6 +4,7 @@ import { supabase } from '../../lib/supabaseClient';
 import { sanitizeInput } from '../../lib/security';
 import { Rocket, Users, Flag, ClipboardList, MoreVertical, Info, Target, Calendar, Check, AlertCircle, Clock } from 'lucide-react';
 // import IdCardUpload from '../../components/IdCardUpload';
+import { APP_CONFIG } from '../../config';
 
 const INDIA_STATES_CITIES = {
   "Andaman and Nicobar Islands": ["Port Blair"],
@@ -79,13 +80,13 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
     teamName: '',
-    teamSize: 2,
+    teamSize: APP_CONFIG.MIN_TEAM_SIZE,
     leader: {
       ...defaultMember,
       full_name: user?.user_metadata?.full_name || '',
       email: user?.email || ''
     },
-    teammates: [{ ...defaultMember }] // Initialized for teamSize 2 (1 teammate)
+    teammates: Array(APP_CONFIG.MIN_TEAM_SIZE - 1).fill({ ...defaultMember })
   });
 
   const [creating, setCreating] = useState(false);
@@ -95,7 +96,7 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
   const [showIdPopup, setShowIdPopup] = useState(false);
 
   const startEditTeam = (stepToOpen = 0) => {
-    const leader = teamMembers?.find(m => m.id === teamData?.leader_id) || teamMembers?.find(m => m.email === user?.email);
+    const leader = teamMembers?.find(m => m.is_leader) || teamMembers?.find(m => m.email === user?.email);
     const teammates = teamMembers?.filter(m => m.id !== leader?.id) || [];
 
     const parseLocation = (loc) => {
@@ -109,7 +110,7 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
 
     setFormData({
       teamName: teamData?.team_name || '',
-      teamSize: teamMembers?.length || 2,
+      teamSize: teamMembers?.length || APP_CONFIG.MIN_TEAM_SIZE,
       leader: {
         ...defaultMember,
         ...leader,
@@ -226,7 +227,20 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
         if (teamErr) throw teamErr;
         finalTeamData = { ...teamData, team_name: cleanTeamName };
       } else {
+        // Guard: check if the user already has a team (avoids duplicate leader_id key error)
+        const { data: existingLeaderRow } = await supabase
+          .from('team_members')
+          .select('team_id')
+          .eq('email', user.email)
+          .eq('is_leader', true)
+          .maybeSingle();
+
+        if (existingLeaderRow?.team_id) {
+          throw new Error('You have already created a team. Please refresh the page to see your existing team.');
+        }
+
         const { data: team, error: teamErr } = await supabase.from('teams').insert({
+          leader_id: user.id,
           team_name: cleanTeamName
         }).select().single();
         if (teamErr) throw teamErr;
@@ -496,7 +510,7 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
                 <div style={{ background: '#dbeafe', color: '#2563eb', padding: 8, borderRadius: 10, flexShrink: 0 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg></div>
                 <div>
                   <h3 style={{ color: '#1e3a8a', fontWeight: 800, margin: '0 0 6px 0', fontSize: 15 }}>Registration Rules</h3>
-                  <p style={{ color: '#1e40af', fontSize: 13, margin: 0, lineHeight: 1.5 }}>Only the Team Lead needs to register the team. Teams must consist of <strong>2 to 4 members</strong> in total (including the leader). Please establish your team size before proceeding.</p>
+                  <p style={{ color: '#1e40af', fontSize: 13, margin: 0, lineHeight: 1.5 }}>Only the Team Lead needs to register the team. Teams must consist of <strong>{APP_CONFIG.MIN_TEAM_SIZE} to {APP_CONFIG.MAX_TEAM_SIZE} members</strong> in total (including the leader). Please establish your team size before proceeding.</p>
                 </div>
               </div>
 
@@ -522,9 +536,11 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
 
                   setFormData(prev => ({ ...prev, teamSize: newSize, teammates: newTeammates }));
                 }} style={{ ...styles.input, cursor: 'pointer' }}>
-                  <option value={2}>2 Members (Lead + 1 Teammate)</option>
-                  <option value={3}>3 Members (Lead + 2 Teammates)</option>
-                  <option value={4}>4 Members (Lead + 3 Teammates)</option>
+                  {Array.from({ length: APP_CONFIG.MAX_TEAM_SIZE - APP_CONFIG.MIN_TEAM_SIZE + 1 }, (_, i) => i + APP_CONFIG.MIN_TEAM_SIZE).map(size => (
+                    <option key={size} value={size}>
+                      {size} Members (Lead + {size - 1} Teammate{size - 1 !== 1 ? 's' : ''})
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -588,7 +604,7 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
   }
 
   // --- SUMMARY VIEW (After Registration) ---
-  const teamLeader = teamMembers.find(m => m.id === teamData.leader_id) || teamMembers.find(m => m.email === user.email);
+  const teamLeader = teamMembers.find(m => m.is_leader) || teamMembers.find(m => m.email === user.email);
   const leaderName = teamLeader?.full_name || 'Leader';
   const registeredDate = teamData.created_at ? new Date(teamData.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'N/A';
   // const missingIdCardsCount = teamMembers.filter(m => !m.id_card_front_url || !m.id_card_back_url).length;
@@ -669,7 +685,7 @@ export default function TeamTab({ hasTeam, teamData, teamMembers, user, setTeamM
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
             {teamMembers.map((m, idx) => {
-              const isLeader = m.id === teamData.leader_id || m.email === user.email;
+              const isLeader = m.is_leader || m.email === user.email;
               return (
                 <div key={m.id || idx} style={{ display: 'flex', alignItems: 'flex-start', gap: 16, padding: '16px 0', borderBottom: idx !== teamMembers.length - 1 ? '1px solid #f3f4f6' : 'none' }}>
                   <div style={{ width: 44, height: 44, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 800, fontSize: 18, flexShrink: 0, background: isLeader ? '#10b981' : '#34d399' }}>

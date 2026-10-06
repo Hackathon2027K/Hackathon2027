@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Users, FileText, Headphones, Minus, Plus, Send } from 'lucide-react';
 import PPTSection from '../components/sections/PPTSection';
+import { APP_CONFIG } from '../config';
 
 const faqs = [
   {
@@ -10,19 +11,19 @@ const faqs = [
       <>
         <strong>Note: Only the Team Leader should register!</strong> You can register through the official hackathon registration portal at{" "}
         <a
-          href="https://www.hackathon2026.in/register"
+          href={`${APP_CONFIG.SITE_URL}/register`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-600 underline"
         >
-          https://www.hackathon2026.in/register
+          {`${APP_CONFIG.SITE_URL}/register`}
         </a>
         . Once registered, the Team Leader can add their team members directly from their dashboard. Team members do not need separate accounts.
       </>
     ),
   },
   {
-    question: "Who can participate in the Hackathon 2027?",
+    question: `Who can participate in the ${APP_CONFIG.EVENT_NAME}?`,
     answer:
       "The hackathon is open to all students, regardless of skill level. Whether you're a beginner exploring your first project or an experienced developer, you're welcome to participate.",
   },

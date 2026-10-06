@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import srcasLogo from "../../assets/logo/srcas-logo.png";
 import pcLogo from "../../assets/logo/programming-club-2-logo.png";
 import msLogo from "../../assets/logo/microsoft.png";
+import { APP_CONFIG } from "../../config";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -184,7 +185,7 @@ MagneticButton.displayName = "MagneticButton";
 // ── Marquee items ────────────────────────────────────────────────────────────
 const MarqueeItem = () => (
   <div className="cf-marquee-item">
-    <span>National Hackathon 2026</span>
+    <span>{APP_CONFIG.EVENT_NAME}</span>
     <span style={{ color: '#d1d5db' }}>✦</span>
     <span>Microsoft Partner</span>
     <span style={{ color: '#d1d5db' }}>✦</span>
@@ -194,7 +195,7 @@ const MarqueeItem = () => (
     <span style={{ color: '#d1d5db' }}>✦</span>
     <span>Singapore Trip</span>
     <span style={{ color: '#d1d5db' }}>✦</span>
-    <span>Aug 14 · Hackathon 2027</span>
+    <span>{APP_CONFIG.EVENT_DATE} · {APP_CONFIG.EVENT_NAME}</span>
     <span style={{ color: '#d1d5db' }}>✦</span>
     <span>Open Innovation</span>
     <span style={{ color: '#d1d5db' }}>✦</span>
